@@ -12,9 +12,16 @@
 
 	<script type="text/javascript" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
 
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-    <button>Nueva Categoria</button>
+    <div id="modalContainer"></div>
+   <div class="container">
+        <div class="row">
+            <h1> LISTADO DE PRODUCTOS</h1>
+        </div>
+    <button>Nuevo Producto</button>
 <table id="tproductos" class="display" style="width:100%">
         <thead>
             <tr>
@@ -22,6 +29,7 @@
                 <th>Nombre_producto</th>
                  <th>categoria</th>
                   <th>marca</th>
+                  <th>proveedor</th>
                   <th>cantidad</th>
                   <th>precio_compra</th>
                   <th>precio_venta</th>
@@ -38,7 +46,8 @@
         columns: [
             { data: 'codigo' },
             { data: 'nombre_producto' },
-             { data: 'marca' },
+             { data: 'categoria' },
+              { data: 'marca' },
               { data: 'proveedor' },
                { data: 'cantidad' },
                 { data: 'precio_compra' },

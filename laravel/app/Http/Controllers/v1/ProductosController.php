@@ -4,7 +4,7 @@ namespace App\Http\Controllers\v1;
  
  use App\Models\Producto;
 use App\Http\Controllers\Controller;
-
+use Illuminate\Http\Request;
  
 class ProductosController extends Controller
 {
@@ -13,9 +13,9 @@ class ProductosController extends Controller
     {
         $response = new \stdClass();
 
-        $producto = producto::all();
+        $productos = producto::all();
 
-        $response->data = $producto;
+        $response->data = $productos;
         $response->success=true;
         
 
@@ -31,6 +31,7 @@ class ProductosController extends Controller
 
         $response->data = $Producto;
         $response->success=true;
+
         return response()->json($response,200);
     }
     public function store(request $request)
@@ -44,11 +45,12 @@ class ProductosController extends Controller
 
         $response->data = $producto;
         $response->success=true;
+
         return response()->json($response,200);
 
     }
 
-    public function update(request $request,$id)
+    public function updatePut(request $request,$id)
     {
         $response = new \stdclass();
 
@@ -61,7 +63,7 @@ class ProductosController extends Controller
         $response->success=true;
         return response()->json($response,200);
 }
-public function patchUpdate(request $request,$id)
+public function UpdatePatch(request $request,$id)
 {
          $response = new \stdclass();
         $producto = producto::find($id);
@@ -80,6 +82,7 @@ public function patchUpdate(request $request,$id)
 
         $response->data = $producto;
         $response->success=true;
+
         return response()->json($response,200);     
 }
 
@@ -87,13 +90,11 @@ public function patchUpdate(request $request,$id)
     {
         $response = new \stdclass();
 
-        $producto =new producto();
-        $producto->codigo=$request->codigo;
-        $producto->nombre_producto=$request->nombre_producto;
-        $producto->save();
+        $producto = producto::find($id);
+        $producto->delete();
 
-        $response->data = $producto;
         $response->success=true;
+
         return response()->json($response,200);
     }
 }

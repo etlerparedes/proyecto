@@ -1,0 +1,86 @@
+<div id="nuevoProducto" class="modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Nuevo Producto</h5>
+        
+      </div>
+
+</div>
+      <div class="modal-body">
+        
+        <div class="row">
+            <div class="col-12">
+              <label for="txtCodigo" class="form-label">Codigo</label>
+              <input type="text" class="form-control" id="txtCodigo" placeholder="Ingrese codigo">
+            </div>
+            <div class="col-12">
+              <label for="txtNombre" class="form-label">Nombre producto</label>
+              <input type="text" class="form-control" id="txtNombre" placeholder="Ingrese producto">
+            </div>
+            <div class="col-12">
+              <label for="txtcategoria" class="form-label">categoria</label>
+              <input type="text" class="form-control" id="txtcategoria" placeholder="Ingrese categoria">
+        </div>
+        		<div class="col-12">
+              <label for="txtmarca" class="form-label">marca</label>
+              <input type="text" class="form-control" id="txtmarca" placeholder="Ingrese marca">
+        </div>
+        <div class="col-12">
+              <label for="txtproveedor" class="form-label">proveedor</label>
+              <input type="text" class="form-control" id="txtproveedor" placeholder="Ingrese proveedor">
+        </div>
+        <div class="col-12">
+              <label for="txtcantidad" class="form-label">cantidad</label>
+              <input type="text" class="form-control" id="txtcantidad" placeholder="Ingrese cantidad">
+        </div>
+        	<div class="col-12">
+              <label for="txtprecio_compra" class="form-label">precio compra</label>
+              <input type="text" class="form-control" id="txtprecio_compra" placeholder="Ingrese precio_compra">
+        </div>
+        	<div class="col-12">
+              <label for="txtprecio_venta" class="form-label">precio venta</label>
+              <input type="text" class="form-control" id="txtprecio_venta" placeholder="Ingrese precio_venta">
+
+      </div>
+      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" onclick="guardarProducto()">Guardar</button>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+  
+ function guardarProducto()
+ {
+
+  $.ajax(
+      {
+        type:"post",
+        url:"http://santrinidad.com/api/v1/productos",
+        data: {codigo:$("#txtCodigo").val(),nombre_producto:$("#txtNombre").val(),categoria:$("#txtcategoria").val()},
+        success:function(response)
+            {
+            
+                
+                $('#nuevoProducto').modal("hide");
+
+                recargarData();
+
+
+            }
+      }
+    );
+
+
+
+ }
+
+
+</script>
