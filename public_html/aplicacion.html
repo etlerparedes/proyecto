@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+  <!--
+    jquery
+    datatable
+    bootstrap
+  -->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+  <script type="text/javascript" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</head>
+<body>
+<div  id =" nuevoproducto " class =" modal " >
+  <clase div  =" diálogo-modal " >
+    <clase div  =" contenido-modal " >
+      
+      <clase div  =" encabezado-modal " >
+        <h5  class =" modal-title " id =" exampleModalLabel " > Nuevo producto </h5 >
+        <button  type =" button " class =" btn-close " data-bs-dismiss =" modal " aria-label =" Close " > </button >
+      </div >
+
+
+        <form  class =" fila g-3 necesita-validación " novalidar >
+
+      <div  class =" cuerpo-modal " >
+
+
+          <tipo de entrada  =" oculto " nombre =" ID " id =" ID " >
+        <div  clase =" fila " >
+            <clase div  =" col-12 " >
+              <etiqueta  para =" txtCodigo " class =" formulario-etiqueta " > Codigo </etiqueta >
+              <tipo de entrada  =" texto " clase =" formulario-control " id =" txtCodigo " placeholder =" Ingrese codigo " >
+              <tipo de entrada  =" texto " clase =" formulario-control " id =" txtCodigo " placeholder =" Ingrese codigo " requerido >
+              <clase div  =" comentarios válidos " >
+                OK
+              </div >
+               <div  class =" comentarios no válidos " >
+                Ingrese el código
+              </div >
+            </div >
+            <clase div  =" col-12 " >
+              <etiqueta  para =" txtNombre " class =" formulario-etiqueta " > Nombre </etiqueta >
+              <tipo de entrada  =" texto " clase =" formulario-control " id =" txtNombre " placeholder =" Ingrese nombre " >
+              <tipo de entrada  =" texto " clase =" formulario-control " id =" txtNombre " placeholder =" Ingrese nombre " requerido >
+
+              <div  class =" comentarios no válidos " >
+                Ingrese el nombre
+              </div >
+            </div >
+        </div >
+
+           <h5 class="modal-title" id="exampleModalLabel">Nuevo producto</h5>
+
+      <clase div  =" pie de página modal " >
+        <button  type =" button " class =" btn btn-secundario " data-bs-dismiss =" modal " > Cerrar </button >
+        <button  type =" button " class =" btn btn-primary " onclick =" guardarproducto() " > Guardar </button >
+      </div >
+
+    </formulario >
+
+    </div >
+  </div >
+</div >
+
+
+<tipo de script  =" texto/javascript " >
+<script type="text/javascript">
+
+(functión  ( )  {
+  'uso estricto'
+
+  //Obtener todos los formularios a los que queremos aplicar estilos de validación de Bootstrap personalizados
+  var  formularios  =  documento . querySelectorAll ( '.necesita-validación' )
+
+  consola _ registro ( formularios ) ;
+
+  // Bucle sobre ellos y evite el envío
+  matriz _ prototipo _ rebanada _ llamada ( formularios )
+    . paraCada ( función  ( formulario )  {
+
+      consola _ registro ( formulario ) ;
+
+      formulario _ addEventListener ( 'enviar' ,  función  ( evento )  {
+
+        consola _ log ( "validacion" ) ;
+
+        if  ( formulario . checkValidity ( ) )  {
+
+          guardar producto ( ) ;
+        }
+
+        evento _ prevenirPredeterminado ( ) ;
+        evento _ detener la propagación ( ) ;
+
+        formulario _ listaclases . add ( 'fue-validado' )
+      } ,  falso )
+    } )
+} ) ( ) ;
+
+
+
+
+
+ functión  guardarproducto ( )
+ {
+
+  $ . ajax (
+  var  ID = $ ( "#ID" ) . valor ( ) ;
+
+  si ( identificación )
+  {
+
+    <tipo de script  =" texto/javascript " >
+<script type="text/javascript">
+
+
+
+        var TProductos;
+
+  TProductos=$('#TProductos').DataTable({
+    $ . ajax (
+      {
+        tipo : "poner" ,
+        URL : 'http://santrinidad.com/api/v1/productos', + ID ,
+        datos : {
+              codigo : $ ( "#txtCodigo" ) . valor ( ) ,
+              nombre_producto : $ ( "#txtNombre_producto" ) ​​. valor ( )
+              } ,
+        éxito : función ( respuesta )
+            {
+
+
+              ventana _ Mensaje Flash . éxito ( 'el producto se guardo correctamente' ) ;
+
+                $ ( '#nuevoproducto' ) . modal ( "ocultar" ) ;
+
+
+
+                recargarDatos ( ) ;
+
+
+            }
+      }
+    ) ;
+
+  }
+
+
+         var TProductos;
+
+  TProductos=$('#TProductos').DataTable({
+    $ . ajax (
+      {
+        tipo : "publicación" ,
+        URL : 'http://santrinidad.com/api/v1/productos', 
+<h5 class="modal-title" id="exampleModalLabel">Nuevo producto</h5>
+        éxito : función ( respuesta )
+            {
+
+
+                ventana _ Mensaje Flash . éxito ( 'el producto se guardo correctamente' ) ;
+
+
+                $ ( '#nuevoproducto' ) . modal ( "ocultar" ) ;
+
+                recargarDatos ( ) ;
+      <h5 class="modal-title" id="exampleModalLabel">Nuevo producto</h5>
+      }
+    ) ;
+
+  } 
+
+
+
+
+ }
+}
+</script >
+</body>
+</html>

@@ -1,0 +1,211 @@
+<div  id =" confirmarEliminar " clase =" modal " >
+  <clase div  =" diálogo-modal " >
+    <clase div  =" contenido-modal " >
+      
+      <clase div  =" encabezado-modal " >
+        <h5  class =" modal-title " id =" exampleModalLabel " > Eliminar Categoria </<div id="nuevoproducto" class="modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Nueva Categoria</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+  
+        <form class="row g-3 needs-validation" novalidate>
+    
+      <div class="modal-body">
+        
+  
+          <input type="hidden" name="ID" id="ID">
+        <div class="row">
+            <div class="col-12">
+              <label for="txtCodigo" class="form-label">Codigo</label>
+              <input type="text" class="form-control" id="txtCodigo" placeholder="Ingrese codigo" required>
+              <div class="valid-feedback">
+                ok
+              </div>
+               <div class="invalid-feedback">
+                Ingrese el código
+              </div>
+            </div>
+            <div class="col-12">
+              <label for="txtNombre" class="form-label">Nombre</label>
+              <input type="text" class="form-control" id="txtNombre" placeholder="Ingrese nombre" required>
+
+              <div class="invalid-feedback">
+                Ingrese el nombre
+              </div>
+            </div>
+        </div>
+
+
+      </div>
+      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button class="btn btn-primary" type="submit">Guardar</button>
+      </div>
+    </form>
+
+    </div>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+
+
+(function () {
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  var forms = document.querySelectorAll('.needs-validation')
+
+  console.log(forms);
+
+  // Loop over them and prevent submission
+  Array.prototype.slice.call(forms)
+    .forEach(function (form) {
+
+      console.log(form);
+
+      form.addEventListener('submit', function (event) {
+
+        console.log("validacion");
+
+        if (form.checkValidity()) {
+          
+          guardarCategoria();
+        }
+
+        event.preventDefault();
+        event.stopPropagation();
+
+        form.classList.add('was-validated')
+      }, false)
+    })
+})();
+
+
+
+
+  
+ function guardarproducto()
+ {
+
+  var ID=$("#ID").val();
+
+  if(ID)
+  {
+    $.ajax(
+      {
+        type:"put",
+        url:"http://santrinidad.com/api/v1/productos/"+ID,
+        data: {
+              codigo:$("#txtCodigo").val(),
+              nombre:$("#txtNombre").val()
+              },
+        success:function(response)
+            {
+            
+
+              window.FlashMessage.success('La categoria se guardo correctamente');
+
+                $('#nuevoproducto').modal("hide");
+
+
+
+                recargarData();
+
+
+            }
+      }
+    );
+
+  }
+  else
+  {
+
+    $.ajax(
+      {
+        type:"post",
+        url:"http://apis.miapp6.com/api/v1/categorias",
+        data: {
+              codigo:$("#txtCodigo").val(),
+              nombre:$("#txtNombre").val()
+              },
+        success:function(response)
+            {
+            
+                window.FlashMessage.success('La categoria se guardo correctamente');
+
+
+                $('#nuevaCategoria').modal("hide");
+
+                recargarData();
+
+
+            }
+      }
+    );
+
+  } 
+
+  
+
+
+ }
+
+
+</script> </h5 >
+        <button  type =" button " class =" btn-close " data-bs-dismiss =" modal " aria-label =" Close " > </button >
+      </div >
+      
+      <div  class =" cuerpo-modal " >
+        
+        <tipo de entrada  =" oculto " nombre =" ID " id =" ID " >
+        <div  clase =" fila " >
+
+          <h2 > ¿Está seguro de eliminar la categoría? </h2 >
+            
+        </div >
+
+
+      </div >
+      
+      <clase div  =" pie de página modal " >
+        <tipo de botón  =" botón " clase =" btn btn-secundario " data-bs-dismiss =" modal " > No </botón >
+        <button  type =" button " class =" btn btn-primary " onclick =" deleteCategoria() " > Si </button >
+      </div >
+      
+    </div >
+  </div >
+</div >
+
+
+<tipo de script  =" texto/javascript " >
+  <script type="text/javascript">
+
+  function  eliminarCategoría ( )
+ {
+    var  id = $ ( "#ID" ) . valor ( ) ;
+
+    $ . ajax (
+        {
+          escriba : "eliminar" ,
+          URL : "http://apis.miapp6.com/api/v1/categorias/" + identificación ,         
+          éxito : función ( respuesta )
+              {
+              
+                $ ( '#confirmarBorrar' ) . modal ( "ocultar" ) ;
+
+                recargarDatos ( ) ;
+
+              }
+        }
+      ) ;
+ }
+
+
+</guión >
